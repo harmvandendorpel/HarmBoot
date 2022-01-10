@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=Browser
+Comment=Starts Chromium in FS
+Icon=nm-device-wireless
+Exec=/home/harmvandendorpel/Desktop/HarmBoot/browser.sh
+Terminal=false
+Type=Application
+NoDisplay=true
+NotShowIn=KDE;GNOME;
+X-GNOME-Bugzilla-Bugzilla=GNOME
+X-GNOME-Bugzilla-Product=NetworkManager
+X-GNOME-Bugzilla-Component=nm-applet
+X-GNOME-UsesNotifications=true
+X-Ubuntu-Gettext-Domain=nm-applet
