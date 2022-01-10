@@ -20,4 +20,4 @@ chromium-browser \
     --start-maximized \
     --kiosk "http://localhost:3000" &
 sleep 5
-# xdotool search --sync --onlyvisible --class "chromium" key F11
+
