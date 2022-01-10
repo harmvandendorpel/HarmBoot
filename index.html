@@ -1,0 +1,67 @@
+<!DOCTYPE html><html lang="en">
+  <head>
+    <script>
+
+      const ARTWORK_URL = 'https://seeder.mutant.garden/e/12651210'
+      const ARTWORK_ONLINE_CHECK = 'https://seeder.mutant.garden/v1/tokens/12651210'
+      const RELOAD_INTERVAL = 1000 * 60 * 60 * 24 // refresh once a day
+
+    </script>
+    <title>HarmBoot</title>
+    <style>
+      body, html, #content {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+
+      body {
+        background-color: black;
+      }
+    </style>
+
+    </head>
+    <body>
+      <iframe id='content'></iframe>
+      <script>
+
+        function sleep(duration) {
+          return new Promise(resolve => {
+            setTimeout(resolve, duration)
+          })
+        }
+  
+        async function isOnline() {
+          try {
+            const result = await fetch(ARTWORK_ONLINE_CHECK)
+            return true
+          } catch {
+            return false
+          }
+        }
+  
+        async function run() {
+          let connected = false
+  
+          while (!connected) {
+            if (await isOnline()) {
+              connected = true
+            } else {
+              console.log('not online, wait and try again')
+              await sleep(1000)
+            }
+          }
+
+          const iframe = document.getElementById('content')
+          iframe.src = ARTWORK_URL
+          setTimeout(run, RELOAD_INTERVAL)
+        }
+  
+        run()
+
+      </script>
+    </body>
+</html>
